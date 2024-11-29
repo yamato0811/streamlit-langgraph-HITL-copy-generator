@@ -72,14 +72,13 @@ class Node:
                 state=state,
             )
 
-            state["messages"].append(human_prompt)
+        state["messages"].append(human_prompt)
 
         # invoke
         ai_message = self.llm((state["messages"]), Copies)
         state["messages"].append(AIMessage(ai_message.model_dump_json()))
 
-        data = ai_message.model_dump()
-        output_list = data["copies"]
+        output_list = ai_message.model_dump()["copies"]
 
         # streamlit表示用のメッセージ
         message_text = ""

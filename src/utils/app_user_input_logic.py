@@ -34,8 +34,6 @@ def select_item(
         select_options,
         key=f"{as_node}_select_{agent.get_state_value(thread, 'iteration_count')}",
     )
-    # CHANGED: ボタンのレンダリングが残ってるから問題発生（同一キーのセレクトボックスが複数存在してしまっている）。
-    # キーを一意にするかrerunしてセレクトボックスの描画を消すしかない
 
     if not st.button(
         "次へ",

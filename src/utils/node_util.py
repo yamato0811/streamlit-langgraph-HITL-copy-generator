@@ -17,6 +17,7 @@ def filter_key_from_list(
 
 
 def get_output_format_instructions(model: BaseModel) -> str:
+    """出力フォーマットの指示を取得する"""
     parser = PydanticOutputParser(pydantic_object=model)
     output_format_instruction = parser.get_format_instructions()
     return output_format_instruction

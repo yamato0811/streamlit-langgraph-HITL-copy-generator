@@ -9,6 +9,7 @@ from agent.state import DisplayMessageDict
 
 
 def load_yaml(yaml_path: str) -> dict[str, Any]:
+    """yamlファイルの読み込み"""
     with open(yaml_path, "r") as file:
         return yaml.safe_load(file)
 
@@ -76,13 +77,12 @@ def _display_message(display_message_dict: DisplayMessageDict) -> None:
         expanded=True,
         icon=display_message_dict["icon"],
     ) as st.session_state.status:
-        # Streamlitで思考過程の表示
         st.markdown(display_message_dict["message_text"])
 
 
 def _save_message_to_session_state(display_message_dict: DisplayMessageDict) -> None:
     """
-    メッセージをセッションステートに保存する
+    メッセージをsession stateに保存する
     """
     save_content = [
         display_message_dict["title"],

@@ -1,6 +1,5 @@
 from typing import Any, Dict, Union
 
-from langchain_core.language_models.chat_models import BaseChatModel
 from langgraph.checkpoint.memory import MemorySaver
 
 from agent.graph import GraphBuilder

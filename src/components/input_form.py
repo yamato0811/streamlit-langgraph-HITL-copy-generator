@@ -1,5 +1,4 @@
 import streamlit as st
-from PIL import Image
 
 
 def _validate_inputs(product: str) -> bool:

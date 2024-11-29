@@ -40,13 +40,8 @@ class Agent:
                 "next_step": self.node.end.name,
             },
         )
-        graph_builder.add_conditional_edges(
-            self.node.reflect_copy,
-            self.node.should_need_additional_info,
-            {
-                "generate": self.node.generate_copy.name,
-                "user_input": self.node.user_input_additioal_info_copy.name,
-            },
+        graph_builder.add_edge(
+            self.node.reflect_copy, self.node.user_input_additioal_info_copy
         )
         graph_builder.add_edge(
             self.node.user_input_additioal_info_copy, self.node.generate_copy

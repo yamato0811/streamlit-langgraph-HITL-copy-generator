@@ -28,10 +28,7 @@ class ReflectDetails(BaseModel):
 
     reason: str = Field(description="回答の理由")
     improvement_point: str = Field(description="改善点")
-    is_additional_info_needed: bool = Field(
-        description="ユーザーからの追加情報が必要か否か"
-    )
     additional_info: Optional[str] = Field(
         default=None,
-        description="ユーザーに求める追加情報の内容(追加情報が不要な場合はNone)",
+        description="ユーザーに求める追加情報の内容(体言止め)",
     )

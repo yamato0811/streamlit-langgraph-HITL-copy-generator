@@ -28,7 +28,6 @@ class State(TypedDict):
     copies: Annotated[list[dict], "キャッチコピーのリスト"]
 
     # Common
-    is_additional_info_needed: Annotated[bool, "追加情報が必要か"]
     additional_info: Annotated[str, "必要な追加情報"]
     is_rethink: Annotated[bool, "再検討を行うか"]
 

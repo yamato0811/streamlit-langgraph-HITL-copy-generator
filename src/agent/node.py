@@ -98,9 +98,9 @@ class Node:
             output["copy_text"] = output["copy_text"].replace("\n", "")
             # markdown改行のため空白スペースが2つ必要
             message_text += f"""
-        【{output["title"]}】\u0020\u0020
-        キャッチコピー：{output["copy_text"]}\u0020\u0020
-        理由：{output["reason"]}
+        **【{output["title"]}】**\u0020\u0020
+        **キャッチコピー**：{output["copy_text"]}\u0020\u0020
+        **理由**：{output["reason"]}
         """
         display_message_dict = {
             "title": f"**キャッチコピーの作成** {state['iteration_count'] + 1}回目",
@@ -143,16 +143,14 @@ class Node:
         display_message_dict = {
             "title": f"**キャッチコピーの改善** {state['iteration_count'] + 1}回目",
             "icon": "🔄",
-            # markdown改行のため空白スペースが2つ必要
             "message_text": f"""
-            改善点：{data["improvement_point"]}\u0020\u0020
-            追加情報の必要性：{data["is_additional_info_needed"]}\u0020\u0020
-            理由：{data["reason"]}
+            **改善点**：{data["improvement_point"]}\u0020\u0020
+            **必要な追加情報**：{data["additional_info"]}\u0020\u0020
+            **理由**：{data["reason"]}
             """,
         }
 
         # 状態の更新
-        state["is_additional_info_needed"] = data["is_additional_info_needed"]
         state["additional_info"] = data["additional_info"]
         state["display_message_dict"] = display_message_dict
 
@@ -176,11 +174,3 @@ class Node:
             return "reflect"
         else:
             return "next_step"
-
-    def should_need_additional_info(
-        self, state: State
-    ) -> Literal["generate", "user_input"]:
-        if state["is_additional_info_needed"]:
-            return "user_input"
-        else:
-            return "generate"

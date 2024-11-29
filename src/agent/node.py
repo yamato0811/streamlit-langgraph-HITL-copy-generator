@@ -22,6 +22,10 @@ class Node:
         llm: LLM,
         prompt: Dict[str, Dict[str, str]],
     ) -> None:
+
+        self.llm = llm
+        self.prompt = prompt
+
         # ================
         # Define Node
         # ================
@@ -33,25 +37,12 @@ class Node:
         )
         self.end = NodeType("dummy_end", self._end_node)
 
-        # ================
-        # Model
-        # ================
-        self.llm = llm
-
-        # ================
-        # Prompts set
-        # ================
-        self.prompt = prompt
-
     # ================
     # Node Functions
     # ================
     def _start_node(self, state: State):
         print("Node: start_node")
 
-    # ----------------
-    # copy
-    # ----------------
     def _generate_copy(self, state: State) -> State:
         print("Node: generate_copy")
 
@@ -64,17 +55,16 @@ class Node:
             )
             human_prompt = HumanMessagePromptTemplate.from_template(
                 self.prompt["generate_copy"]["user_first"]
-            )
-            human_prompt = human_prompt.format(
+            ).format(
                 product_info=product_info,
                 output_format_instruction=get_output_format_instructions(Copies),
             )
+
             state["messages"] = [system_prompt, human_prompt]
         else:
             human_prompt = HumanMessagePromptTemplate.from_template(
                 self.prompt["generate_copy"]["user_second"]
-            )
-            human_prompt = human_prompt.format(
+            ).format(
                 product_info=product_info,
                 additional_info=state["additional_info"],
                 additional_info_input=state["additional_info_input"],
@@ -124,9 +114,7 @@ class Node:
 
         human_prompt = HumanMessagePromptTemplate.from_template(
             self.prompt["reflect_copy"]["user"]
-        )
-
-        human_prompt = human_prompt.format(
+        ).format(
             copies=copies,
             output_format_instruction=get_output_format_instructions(ReflectDetails),
         )

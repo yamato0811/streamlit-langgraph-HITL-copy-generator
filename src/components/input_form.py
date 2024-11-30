@@ -2,7 +2,7 @@ import streamlit as st
 
 
 def _validate_inputs(product: str) -> bool:
-    return bool(product.strip())
+    return bool(product)
 
 
 def input_form() -> tuple[str, str, str]:

@@ -36,7 +36,7 @@ class Agent:
             self.node.should_rethink,
             {
                 "reflect": self.node.reflect_copy.name,
-                "next_step": self.node.end.name,
+                "end": self.node.end.name,
             },
         )
         graph_builder.add_edge(

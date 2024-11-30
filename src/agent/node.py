@@ -156,8 +156,8 @@ class Node:
     # ================
     # Conditional Functions
     # ================
-    def should_rethink(self, state: State) -> Literal["reflect", "next_step"]:
+    def should_rethink(self, state: State) -> Literal["reflect", "end"]:
         if state["is_rethink"]:
             return "reflect"
         else:
-            return "next_step"
+            return "end"

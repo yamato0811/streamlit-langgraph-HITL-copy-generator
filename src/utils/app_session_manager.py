@@ -4,6 +4,7 @@ from typing import List
 import streamlit as st
 
 from agent.agent import Agent
+from agent.state import DisplayMessageDict
 from models.llm import LLM
 
 
@@ -34,3 +35,17 @@ class SessionManager:
     def get_messages(self) -> List:
         """メッセージリストを取得"""
         return st.session_state.messages
+
+    def save_message_to_session_state(
+        self,
+        display_message_dict: DisplayMessageDict,
+    ) -> None:
+        """
+        メッセージをsession stateに保存する
+        """
+        save_content = [
+            display_message_dict["title"],
+            display_message_dict["icon"],
+            display_message_dict["message_text"],
+        ]
+        st.session_state.messages.append(save_content)

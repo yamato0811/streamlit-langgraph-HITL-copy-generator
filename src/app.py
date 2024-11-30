@@ -65,7 +65,7 @@ def main() -> None:
         # 開始ノードの場合
         if agent.is_start_node(thread):
             # グラフの実行
-            stream_graph(agent, initial_input, thread)
+            stream_graph(agent, initial_input, thread, session_manager)
 
         # 次のノードがある場合
         next_graph: tuple[str, ...] | Any = agent.get_next_node(thread)
@@ -87,7 +87,7 @@ def main() -> None:
                 )
 
             # グラフの実行
-            stream_graph(agent, None, thread)
+            stream_graph(agent, None, thread, session_manager)
 
         # 終了ノードの場合
         if agent.is_end_node(thread):

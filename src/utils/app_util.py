@@ -6,6 +6,7 @@ import yaml
 
 from agent.agent import Agent
 from agent.state import DisplayMessageDict
+from utils.app_session_manager import SessionManager
 
 
 def load_yaml(yaml_path: str) -> dict[str, Any]:
@@ -42,7 +43,12 @@ def with_spinner(message: str = "Processing..."):
 
 
 @with_spinner("Processing...")
-def stream_graph(agent: Agent, input: Dict | None, thread: Dict) -> None:
+def stream_graph(
+    agent: Agent,
+    input: Dict | None,
+    thread: Dict,
+    session_manager: SessionManager,
+) -> None:
     """
     グラフのストリーミングを行う
     """
@@ -55,17 +61,17 @@ def stream_graph(agent: Agent, input: Dict | None, thread: Dict) -> None:
             # 表示
             _display_message(display_message_dict)
             # messageの保存
-            _save_message_to_session_state(display_message_dict)
+            session_manager.save_message_to_session_state(display_message_dict)
 
 
 def display_history(messages) -> None:
     """
-    Streamlit Session Stateに保存されたメッセージを表示する
+    メッセージ履歴を表示する
     """
     for block in messages:
         title, icon, message = block
         with st.expander(title, expanded=True, icon=icon):
-            st.write(message)
+            st.markdown(message)
 
 
 def _display_message(display_message_dict: DisplayMessageDict) -> None:
@@ -78,18 +84,6 @@ def _display_message(display_message_dict: DisplayMessageDict) -> None:
         icon=display_message_dict["icon"],
     ) as st.session_state.status:
         st.markdown(display_message_dict["message_text"])
-
-
-def _save_message_to_session_state(display_message_dict: DisplayMessageDict) -> None:
-    """
-    メッセージをsession stateに保存する
-    """
-    save_content = [
-        display_message_dict["title"],
-        display_message_dict["icon"],
-        display_message_dict["message_text"],
-    ]
-    st.session_state.messages.append(save_content)
 
 
 def find_item_by_title(result_node: List[Dict], title: str) -> dict | None:

@@ -14,7 +14,7 @@ graph TD;
 	reflect_copy --> user_input_additioal_info_copy;
 	user_input_additioal_info_copy --> generate_copy;
 	user_select_copy -. &nbsp;reflect&nbsp; .-> reflect_copy;
-	user_select_copy -. &nbsp;next_step&nbsp; .-> dummy_end;
+	user_select_copy -. &nbsp;end&nbsp; .-> dummy_end;
 	classDef default fill:#f2f0ff,line-height:1.2
 	classDef first fill-opacity:0
 	classDef last fill:#bfb6fc

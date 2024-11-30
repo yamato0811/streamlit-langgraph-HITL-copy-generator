@@ -15,21 +15,22 @@ class Agent:
         prompt: Dict[str, Dict[str, str]],
     ) -> None:
         # ================
-        # Graph
+        # Init
         # ================
         graph_builder = GraphBuilder(State)
-
-        # Create Node
         self.node = Node(llm, prompt)
 
-        # Add nodes (generate copy)
+        # ================
+        # Build Graph
+        # ================
+        # Add nodes
         graph_builder.add_node(self.node.generate_copy)
         graph_builder.add_node(self.node.user_select_copy)
         graph_builder.add_node(self.node.reflect_copy)
         graph_builder.add_node(self.node.user_input_additioal_info_copy)
         graph_builder.add_node(self.node.end)
 
-        # Add edges (generate copy)
+        # Add edges
         graph_builder.add_edge(self.node.generate_copy, self.node.user_select_copy)
         graph_builder.add_conditional_edges(
             self.node.user_select_copy,
@@ -61,7 +62,9 @@ class Agent:
             ],
         )
 
-        # Mermaidコードをファイルに書き出し
+        # ================
+        # write mermaid
+        # ================
         with open("graph.md", "w") as file:
             file.write(f"```mermaid\n{self.graph.get_graph().draw_mermaid()}```")
 

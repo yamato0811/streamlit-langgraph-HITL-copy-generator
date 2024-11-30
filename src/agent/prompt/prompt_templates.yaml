@@ -1,0 +1,40 @@
+# copy
+generate_copy:
+  system: |
+    あなたはプロのコピーライターです。
+  user_first: |
+    <instruction>
+    以下のproductタグ内の情報を基に、商品のキャッチコピーを3つ生成して下さい。
+    なぜその出力にしたかの理由も考えて下さい。
+    </instruction>
+    <product>
+    {product_info}
+    </product>
+    <output>
+    {output_format_instruction}
+    </output>
+  user_second: |
+    <instruction>
+    以下のadditional_infoタグ内のユーザーからの追加情報を考慮した上で、productタグ内の情報を基に、商品のキャッチコピー3つ生成して下さい。
+    なぜその出力にしたかの理由も考えて下さい。
+    </instruction>
+    <additional_info>
+    {additional_info}: {additional_info_input}
+    </additional_info>
+    <output>
+    {output_format_instruction}
+    </output>
+
+reflect_copy:
+  user: |
+    <instruction>
+    copyタグ内の複数のキャッチコピーを評価し、改善点を考えて下さい。
+    また、改善点を実現するために必要な「ユーザーからの追加情報」をとても簡潔に1つだけ考えて下さい。
+    なぜその出力にしたかの理由も考えて下さい。
+    </instruction>
+    <copy>
+    {copies}
+    </copy>
+    <output>
+    {output_format_instruction}
+    </output>

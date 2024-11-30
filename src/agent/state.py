@@ -24,10 +24,7 @@ class State(TypedDict):
     # ================
     # Output
     # ================
-    # Copy
     copies: Annotated[list[dict], "キャッチコピーのリスト"]
-
-    # Common
     additional_info: Annotated[str, "必要な追加情報"]
     is_rethink: Annotated[bool, "再検討を行うか"]
 

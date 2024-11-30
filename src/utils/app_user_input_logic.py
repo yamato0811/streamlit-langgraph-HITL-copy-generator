@@ -37,7 +37,6 @@ def select_item(
 
     if not st.button(
         "次へ",
-        type="primary",
         key=f"{as_node}_button_{agent.get_state_value(thread, 'iteration_count')}",
     ):
         print("User Input Stop")
@@ -84,7 +83,6 @@ def input_additional_info(agent: Agent, thread: dict, as_node: str) -> None:
 
     if not st.button(
         "次へ",
-        type="primary",
         disabled=not bool(additional_info_input),
         key=as_node,
     ):

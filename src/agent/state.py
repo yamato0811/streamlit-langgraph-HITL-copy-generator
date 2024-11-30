@@ -1,6 +1,5 @@
 from typing import Annotated, List
 
-from PIL import Image
 from typing_extensions import TypedDict
 
 

@@ -15,8 +15,8 @@ LangGraphによるHuman-in-the-loopも実現している。
 1. **リポジトリのクローン**
 
     ```bash
-    git clone https://github.com/yamato0811/langgraph-streamlit-human-in-the-loop.git
-    cd langgraph-streamlit-human-in-the-loop
+    https://github.com/yamato0811/streamlit-langgraph-HITL-copy-generator.git
+    cd streamlit-langgraph-HITL-copy-generator
     ```
 
 2. **仮想環境の作成（推奨）**

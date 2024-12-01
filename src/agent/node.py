@@ -58,6 +58,7 @@ class Node:
             )
 
             state["messages"] = [system_prompt, human_prompt]
+        # 2回目以降のコンテンツ生成
         else:
             human_prompt = HumanMessagePromptTemplate.from_template(
                 self.prompt["generate_copy"]["user_second"]
@@ -69,12 +70,14 @@ class Node:
                 state=state,
             )
 
+        # 履歴にユーザーの入力を追加
         state["messages"].append(human_prompt)
-
         # invoke
         ai_message = self.llm((state["messages"]), Copies)
+        # 履歴にAIの出力を追加
         state["messages"].append(AIMessage(ai_message.model_dump_json()))
 
+        # AIの出力をリストに変換
         output_list = ai_message.model_dump()["copies"]
 
         # streamlit表示用のメッセージ
@@ -82,7 +85,7 @@ class Node:
         for output in output_list:
             # avoid to break markdown format
             output["copy_text"] = output["copy_text"].replace("\n", "")
-            # markdown改行のため空白スペースが2つ必要
+            # markdown改行のため空白スペース(\u0020)が2つ必要
             message_text += f"""
         **【{output["title"]}】**\u0020\u0020
         **キャッチコピー**：{output["copy_text"]}\u0020\u0020

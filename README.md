@@ -43,7 +43,9 @@ LangGraphによるHuman-in-the-loopも実現している。
 
 5. **Streamlitアプリの起動**
 
+    `src`ディレクトリに移動し、以下のコマンドを実行する。
     ```bash
+    cd src
     streamlit run app.py
     ```
 

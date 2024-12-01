@@ -118,10 +118,11 @@ class Node:
             output_format_instruction=get_output_format_instructions(ReflectDetails),
         )
 
+        # 履歴にユーザーの入力を追加
         state["messages"].append(human_prompt)
-
         # invoke
         ai_message = self.llm((state["messages"]), ReflectDetails)
+        # 履歴にAIの出力を追加
         state["messages"].append(AIMessage(ai_message.model_dump_json()))
 
         # 文字列をPythonの辞書に変換

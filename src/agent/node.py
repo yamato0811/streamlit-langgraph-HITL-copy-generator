@@ -40,9 +40,6 @@ class Node:
     # ================
     # Node Functions
     # ================
-    def _start_node(self, state: State):
-        print("Node: start_node")
-
     def _generate_copy(self, state: State) -> State:
         print("Node: generate_copy")
 

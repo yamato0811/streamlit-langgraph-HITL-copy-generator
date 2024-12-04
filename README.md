@@ -1,7 +1,6 @@
 # Streamlit × LangGraph（Human-in-the-loop）広告コピー文生成アプリ
 
-本リポジトリは、StreamlitとLangGraphを用いた広告キャッチコピー生成アプリのサンプルコードである。  
-LangGraphによるHuman-in-the-loopも実現している。
+本リポジトリでは、StreamlitとLangGraphを用いた広告キャッチコピー生成アプリのサンプルコードを公開している。実装では、LangGraphによるHuman-in-the-loopを実現している。
 
 [![デモ動画](./images/demo.gif)](./images/demo.gif)
 

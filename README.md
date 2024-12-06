@@ -4,6 +4,11 @@
 
 [![デモ動画](./images/demo.gif)](./images/demo.gif)
 
+> [!NOTE]
+> 本アプリおよびの解説記事をQiitaに投稿しています。
+> 是非そちらもご覧下さい！
+> <br> [Streamlit × LangGraphでHuman-in-the-loop Agentの実装：広告コピー文生成アプリケーション](https://qiita.com/yamato0811/items/02688690a85a670b773f)
+
 ## 特徴
 - **LangGraphによる柔軟なワークフロー定義:**  LangGraphによって処理フローをグラフ構造で定義し、柔軟なワークフローを実現している。
 - **Human-in-the-loopによる品質向上:**  AIによる生成結果に人間の意見を反映することで、より高品質なキャッチコピーを生成できる。

@@ -40,6 +40,8 @@
     cp .env.example .env
     ```
 
+    Bedrockを利用する場合、[オレゴンリージョンでのモデル（Claude 3.5 Sonnet v2）の有効化](https://docs.aws.amazon.com/ja_jp/bedrock/latest/userguide/getting-started.html#getting-started-model-access)と、IAMアクセスキーの発行および[AWS CLIの設定](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)が必要である。（EC2上で実行する場合は必要なポリシーをアタッチすればよい。）
+
 5. **Streamlitアプリの起動**
 
     `src`ディレクトリに移動し、以下のコマンドを実行する。

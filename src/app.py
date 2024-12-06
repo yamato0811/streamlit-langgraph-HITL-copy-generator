@@ -11,8 +11,10 @@ from utils.app_util import display_history, load_yaml, stream_graph
 
 load_dotenv()
 
+MODEL = "claude-3-5"  # specify "gpt-4o" or "claude-3-5"
 THREAD_ID = "1"
 PROMPT_PATH = "agent/prompt/prompt_templates.yaml"
+TEMPERATURE = 1.0
 
 
 def main() -> None:
@@ -29,7 +31,7 @@ def main() -> None:
     # ================
     # Init Actor
     # ================
-    llm = LLM("gpt-4o", 1)
+    llm = LLM(MODEL, TEMPERATURE)
     prompt: Dict[str, Dict[str, str]] = load_yaml(PROMPT_PATH)
 
     # ================

@@ -94,7 +94,7 @@ def main() -> None:
         # 終了ノードの場合
         if agent.is_end_node(thread):
             selected_copy = agent.get_state_value(thread, "selected_copy")
-            st.success(f"生成したコピー: {selected_copy["copy_text"]}")
+            st.success(f'生成したコピー: {selected_copy["copy_text"]}')
             break
 
 
